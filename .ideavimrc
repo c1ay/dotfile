@@ -1,10 +1,18 @@
 let mapleader=' '
+" 启用 easymotion
+set easymotion
 " 启用vim surround功能
 set surround
 " 启用multi cursor
 set multiple-cursors
+set commentary
+set argtextobj
+set textobj-entire
+set ReplaceWithRegister
+
 " 显示行号
 set nu
+set clipboard+=ideaput
 " 显示相对行号
 set rnu
 " 高亮搜索
@@ -17,6 +25,10 @@ set showmode
 set clipboard=unnamed
 " 搜索时智能匹配大小写
 set ignorecase smartcase
+set ideajoin
+
+let g:argtextobj_pairs="[:],(:),<:>"
+
 
 noremap gb <ESC>:action FindBugs.CurrentFileAction<CR>
 noremap <C-O> <ESC>:action Back<CR>
@@ -37,6 +49,13 @@ nnoremap <Leader>gf :action GotoFile<CR>
 nnoremap <Leader>gi :action GotoImplementation<CR>
 nnoremap <Leader>gs :action GotoSymbol<CR>
 nnoremap <Leader>gt :action GotoTest<CR>
+" go to usage
+nnoremap <Leader>gu :action ShowUsages<CR>
+
+"重命名 refactor rename
+nnoremap <leader>rr :action RenameElement<CR>
+
+
 " terminal
 nnoremap <Leader>' :action ActivateTerminalToolWindow<CR>
 " project tree
@@ -53,7 +72,6 @@ inoremap <C-l> <Right>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-d> <Delete>
-set ideajoin
 " Window operation
 nnoremap <Leader>ww <C-W>w
 nnoremap <Leader>wd <C-W>c
@@ -64,7 +82,7 @@ nnoremap <Leader>wl <C-W>l
 nnoremap <Leader>ws <C-W>s
 nnoremap <Leader>wv <C-W>v
 nnoremap <Leader>w- :action DecrementWindowWidth<CR>
-nnoremap <Leader>w+ :action IncrementWindowWidth<CR>
+nnoremap <Leader>w= :action IncrementWindowWidth<CR>
 
 nnoremap tn gt
 nnoremap tp gT
@@ -75,7 +93,6 @@ xnoremap <Leader>cl :action CommentByLineComment<CR>
 nnoremap <Leader>ps :action SearchEverywhere<CR>
 nnoremap <Leader>pf :action GotoFile<CR>
 
-nnoremap <Leader>fu :action ShowUsages<CR>
 
 " code errors
 nnoremap <Leader>ee :action GoToErrorGroup<CR>
@@ -85,4 +102,8 @@ nnoremap <Leader>ep :action GotoPreviousError<CR>
 " recent files
 nnoremap <Leader>bb :action RecentFiles<CR>
 
-set clipboard+=ideaput
+map <leader>s <Action>(SelectInProjectView)
+" map <leader>f <Plug>(easymotion-s)
+" map <leader>e <Plug>(easymotion-f)
+
+
